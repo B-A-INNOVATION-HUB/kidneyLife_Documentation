@@ -10,4 +10,17 @@ Reduce missed kidney tumours and stones by reaching a high recall for these two 
 Lower the cost of kidney diagnosis in public hospitals by running on ordinary laptops without specialised hardware.
 Keep clinicians in control through visible confidence scores and an automatic referral warning for uncertain predictions.
 Build a foundation that can later be extended to other organs, imaging types and hospitals.
+Here is Part 3: Business Success Criteria from the document:
 
+3. Business Success Criteria
+Overall test accuracy: To achieve at least 90\% accuracy on the unseen test set of 1,871 CT images, as reported by the model evaluation step.
+
+Recall for Tumour and Stone: To achieve at least 90\% recall for each of these two classes, as shown by the per-class recall in the classification report.
+
+Speed of a single prediction: To classify a single CT image and display a confidence score for each diagnosis in less than 10 seconds on a laptop CPU, timed during the live demonstration.
+
+Speed of full test evaluation: To process all 1,871 test images and produce a confusion matrix and classification report in less than 5 minutes on a laptop with 16 GB RAM or less, timed when the report is generated.
+
+Safety of uncertain predictions: To display a referral warning for every prediction below 80\% confidence, checked during single-image testing.
+
+User acceptance: To have at least 80\% of pilot clinicians rate the tool as useful, measured by a questionnaire after a proposed two-week pilot at Dr George Mukhari Academic Hospital.
