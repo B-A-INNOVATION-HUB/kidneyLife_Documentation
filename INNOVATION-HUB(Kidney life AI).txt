@@ -53,3 +53,12 @@ We at INNOVATION-HUB recognised that artificial intelligence can relieve part of
 •	The system will process images locally, and the images will contain no patient names, in line with the Protection of Personal Information Act (POPIA).
 •	The system will stop with a clear message, rather than crashing, when the dataset or a class folder is missing.
 
+
+6.	Constraints
+
+•	Scope: The system analyses only two-dimensional abdominal CT kidney images in four classes (Normal, Cyst, Stone and Tumour). Other organs, other imaging types (X-ray, MRI and ultrasound) and full 3D CT volumes are out of scope.
+•	Data origin: The training data comes from hospitals in Dhaka, Bangladesh. The model’s performance on images from South African scanners and patients has not yet been validated.
+•	Hardware: Training is done on laptop CPUs, because TensorFlow has not supported GPUs on native Windows after version 2.10 (TensorFlow, 2026). Images are therefore reduced to 128 × 128 grayscale and training is limited to 20 epochs. Our first training run took about 20 minutes, at 87 to 144 seconds per epoch.
+•	Clinical information: The model sees only the image, not the patient’s history, symptoms or laboratory results.
+•	Regulation: KidneyLife AI is an academic prototype. It is not a registered medical device and may not be used for clinical decisions without regulatory approval.
+
