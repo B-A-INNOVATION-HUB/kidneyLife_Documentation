@@ -31,3 +31,25 @@ Imaging capacity in public hospitals is also fragile. At Dr George Mukhari Acade
 Kidney disease adds to this pressure. Estimates suggest that up to 17% of South Africans may have chronic kidney disease, driven partly by diabetes and HIV, while dialysis and transplants in the public sector are strictly rationed (Chothia, 2025). Finding stones, cysts and tumours early therefore protects kidney function and avoids expensive emergency care.
 We at INNOVATION-HUB recognised that artificial intelligence can relieve part of this workload. Published research on the same CT Kidney Dataset reported accuracies above 99% with deep learning models (Islam et al., 2022), which shows that automatic classification of these four conditions is achievable. We therefore developed KidneyLife AI, a practical decision-support tool that a public hospital can afford. It is a lightweight model that runs on a standard laptop, sorts kidney CT images into Normal, Cyst, Stone and Tumour, and shows the clinician a confidence score for each prediction. By automating part of the diagnostic process, it helps clinicians prioritise urgent cases and shortens the time to medical intervention
 
+
+5.	Requirements
+
+5.1 Functional Requirements
+•	The system must accept CT kidney images in JPG or PNG format.
+•	The system must find the dataset automatically and split each class into training (70%), validation (15%) and test (15%) sets.
+•	The system must pre-process every image by converting it to grayscale, resizing it to 128 × 128 pixels and scaling the pixel values to between 0 and 1.
+•	The system must classify each image as Normal, Cyst, Stone or Tumour and show the confidence score for all four classes.
+•	The system must display a referral warning when the highest confidence score is below 80%.
+•	The system must produce a test report containing accuracy, precision, recall, F1-score and a confusion matrix.
+•	The system must save the trained model and load it again without retraining.
+•	The system must let the user classify either a random test image or their own image by entering its file path.
+
+5.2 Non-Functional Requirements
+•	The system will complete a single prediction in less than 10 seconds on a laptop CPU.
+•	The system will use a fixed random seed so that the data split and training give consistent results on repeated runs.
+•	The system will use plain-language prompts and messages so that non-programmers can operate the tool.
+•	The system will run on any Windows laptop with Python 3.10 to 3.13 without the user editing file paths.
+•	The code will be organised into eight clearly commented parts.
+•	The system will process images locally, and the images will contain no patient names, in line with the Protection of Personal Information Act (POPIA).
+•	The system will stop with a clear message, rather than crashing, when the dataset or a class folder is missing.
+
