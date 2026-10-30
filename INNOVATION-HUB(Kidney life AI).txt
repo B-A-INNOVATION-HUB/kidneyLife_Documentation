@@ -179,3 +179,11 @@ Purpose in KidneyLife AI: Designing the project poster
 
 Tool or technique: Supervised multi-class image classification, CNN, data augmentation, class weighting, early stopping
 Purpose in KidneyLife AI: Explained in Part B
+
+9.	Problem Definition
+What is the problem?
+Kidney cysts, stones and tumours are usually confirmed with abdominal CT scans, and a radiologist must report every scan. South Africa has roughly one radiologist per 100,000 people (World Health Expo, 2024), and public hospitals feel this shortage most. When scanners fail or demand rises, the queue grows: at Dr George Mukhari Academic Hospital, patients waited four to six days in casualty during a CT outage (Pongweni, 2024). At the same time, up to 17% of South Africans may have chronic kidney disease (Chothia, 2025). When CT images wait to be read, a tumour or blocking stone can be found late, leading to lost kidney function, emergency surgery or a poorer cancer outcome.
+How will solving it help?
+KidneyLife AI classifies each kidney CT image within seconds and shows a confidence score for every prediction. Radiologists can review suspected tumours and stones first, so waiting times should fall and patients in under-staffed public hospitals reach treatment sooner, while the doctor still makes the final diagnosis. For the Ga-Rankuwa community and the wider City of Tshwane, this means shorter casualty stays, fewer emergency admissions and better use of existing CT scanners, which lowers pressure on the public health budget. The solution runs on a standard laptop, so other public hospitals could adopt it without expensive hardware.
+ 
+
