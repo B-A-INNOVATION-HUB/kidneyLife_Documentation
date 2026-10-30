@@ -112,3 +112,70 @@ Impact: Medium
 Mitigation:
 Two-week pilot with training sessions.
 A radiologist champion and a short user guide.
+
+8. Tools and Techniques
+
+8.1 Programming language
+
+Tool or technique: Python 3.11
+Purpose in KidneyLife AI: Main language, chosen for its mature AI libraries and readability
+
+8.2 Deep learning
+
+Tool or technique: TensorFlow 2.21 with Keras
+Purpose in KidneyLife AI: Loading images, building, training, saving and loading the CNN
+
+8.3 Machine learning utilities
+
+Tool or technique: scikit-learn
+Purpose in KidneyLife AI: Class weights, confusion matrix and classification report
+
+8.4 Numerical computing
+
+Tool or technique: NumPy
+Purpose in KidneyLife AI: Array calculations, counting images and selecting the most likely class
+
+8.5 Visualisation
+
+Tool or technique: Matplotlib
+Purpose in KidneyLife AI: Confusion matrix and display of each classified CT image
+
+8.6 Python standard library
+
+Tool or technique: os, sys, shutil, random
+Purpose in KidneyLife AI: Folder paths, stopping on errors, copying images and shuffling
+
+8.7 Dataset
+
+Tool or technique: CT Kidney Dataset (Kaggle)
+Purpose in KidneyLife AI: 12,446 labelled CT images in four classes
+
+8.8 Development environment
+
+Tool or technique: Visual Studio Code with the Python extension
+Purpose in KidneyLife AI: Writing, running and debugging the code
+
+8.9 Version control and project management
+
+Tool or technique: Git, GitHub repository and GitHub Projects board
+Purpose in KidneyLife AI: Branches, pull requests, code review and task tracking for all members
+
+8.10 Communication
+
+Tool or technique: WhatsApp and online meetings
+Purpose in KidneyLife AI: Planning, sharing progress and resolving problems
+
+8.11 Documentation
+
+Tool or technique: Microsoft Word and Grammarly
+Purpose in KidneyLife AI: Writing this document and checking grammar
+
+8.12 Poster
+
+Tool or technique: Canva
+Purpose in KidneyLife AI: Designing the project poster
+
+8.13 Techniques
+
+Tool or technique: Supervised multi-class image classification, CNN, data augmentation, class weighting, early stopping
+Purpose in KidneyLife AI: Explained in Part B
