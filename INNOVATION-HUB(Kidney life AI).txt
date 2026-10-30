@@ -1,6 +1,6 @@
 PART A: DOCUMENTATION ASPECTS
 1.	KidneyLife AI’s Relevance to the Theme
-The diagnosis of kidney disease depends on the timely reading of CT scans, yet in South Africa’s public hospitals it is often delayed by a shortage of radiologists and unreliable scanning capacity. Although the Fourth Industrial Revolution is widely promoted, few public-sector patients have felt its benefits. KidneyLife AI answers the theme “an AI Solution for Industries” by bringing deep learning into the healthcare industry as a decision-support tool for under-resourced hospitals such as Dr George Mukhari Academic Hospital in Ga-Rankuwa. The solution is trained on 12,446 labelled CT images from the publicly available CT Kidney Dataset and classifies each abdominal CT image as Normal, Cyst, Stone or Tumour, with a confidence score for every prediction. Scans about which the model is uncertain are flagged for radiologist review, so clinicians can attend to urgent patients first while the final diagnosis remains with the medical professional. In this way, the solution reduces diagnostic workload, shortens the time from scan to treatment, makes better use of existing CT equipment, and shows how affordable AI can serve communities that new technology usually leaves behind.
+The diagnosis of kidney disease depends on the timely reading of CT scans, yet in South Africa’s public hospitals it is often delayed by a shortage of radiologists and unreliable scanning capacity. Although the Fourth Industrial Revolution is widely promoted, few public-sector patients have felt its benefits. KidneyLife AI answers the theme “an AI Solution for Industries” by bringing deep learning into the healthcare industry as a decision-support tool for under-resourced hospitals such as Dr George Mukhari Academic Hospital in Ga-Rankuwa. The solution is trained on 12,446 labelled CT images from the publicly available CT Kidney Dataset and classifies each abdominal CT image as Normal, Cyst, Stone, or Tumour, with a confidence score for every prediction. Scans about which the model is uncertain are flagged for radiologist review, so clinicians can attend to urgent patients first while the final diagnosis remains with the medical professional. In this way, the solution reduces diagnostic workload, shortens the time from scan to treatment, makes better use of existing CT equipment, and shows how affordable AI can serve communities that new technology usually leaves behind.
 
 2. Business Objectives
 The objectives of KidneyLife AI are to:
@@ -27,7 +27,7 @@ User acceptance: To have at least 80\% of pilot clinicians rate the tool as usef
 
 4. Business Background
 South Africa’s public health system serves most of the population, yet it has very few imaging specialists. The country has approximately 700 active radiologists, about one per 100,000 people compared with 13 per 100,000 in Europe, and only about 20 new radiologists qualify each year (World Health Expo, 2024). Every CT scan must still be reported by one of these specialists, so scans queue up whenever demand rises or staff are absent.
-Imaging capacity in public hospitals is also fragile. At Dr George Mukhari Academic Hospital, two older CT scanners stopped working during 2023 and a newer one failed in January 2024, leaving the hospital without a working CT scanner for nearly three weeks. Patients who would normally stay one day in casualty waited four to six days (Pongweni, 2024). At Charlotte Maxeke Johannesburg Academic Hospital, about 2,600 oncology patients were waiting for MRI scans, with outpatient bookings extending to December 2026 (Bateman and Joseph, 2026). When scanning time is this scarce, every scan must be reported and acted on as quickly as possible.
+Imaging capacity in public hospitals is also fragile. At Dr George Mukhari Academic Hospital, two older CT scanners stopped working during 2023, and a newer one failed in January 2024, leaving the hospital without a working CT scanner for nearly three weeks. Patients who would normally stay one day in casualty waited four to six days (Pongweni, 2024). At Charlotte Maxeke Johannesburg Academic Hospital, about 2,600 oncology patients were waiting for MRI scans, with outpatient bookings extending to December 2026 (Bateman and Joseph, 2026). When scanning time is this scarce, every scan must be reported and acted on as quickly as possible.
 Kidney disease adds to this pressure. Estimates suggest that up to 17% of South Africans may have chronic kidney disease, driven partly by diabetes and HIV, while dialysis and transplants in the public sector are strictly rationed (Chothia, 2025). Finding stones, cysts and tumours early therefore protects kidney function and avoids expensive emergency care.
 We at INNOVATION-HUB recognised that artificial intelligence can relieve part of this workload. Published research on the same CT Kidney Dataset reported accuracies above 99% with deep learning models (Islam et al., 2022), which shows that automatic classification of these four conditions is achievable. We therefore developed KidneyLife AI, a practical decision-support tool that a public hospital can afford. It is a lightweight model that runs on a standard laptop, sorts kidney CT images into Normal, Cyst, Stone and Tumour, and shows the clinician a confidence score for each prediction. By automating part of the diagnostic process, it helps clinicians prioritise urgent cases and shortens the time to medical intervention
 
@@ -58,7 +58,57 @@ We at INNOVATION-HUB recognised that artificial intelligence can relieve part of
 
 •	Scope: The system analyses only two-dimensional abdominal CT kidney images in four classes (Normal, Cyst, Stone and Tumour). Other organs, other imaging types (X-ray, MRI and ultrasound) and full 3D CT volumes are out of scope.
 •	Data origin: The training data comes from hospitals in Dhaka, Bangladesh. The model’s performance on images from South African scanners and patients has not yet been validated.
-•	Hardware: Training is done on laptop CPUs, because TensorFlow has not supported GPUs on native Windows after version 2.10 (TensorFlow, 2026). Images are therefore reduced to 128 × 128 grayscale and training is limited to 20 epochs. Our first training run took about 20 minutes, at 87 to 144 seconds per epoch.
-•	Clinical information: The model sees only the image, not the patient’s history, symptoms or laboratory results.
+•	Hardware: Training is done on laptop CPUs, because TensorFlow has not supported GPUs on native Windows after version 2.10 (TensorFlow, 2026). Images are therefore reduced to 128 × 128 grayscale, and training is limited to 20 epochs. Our first training run took about 20 minutes, at 87 to 144 seconds per epoch.
+•	Clinical information: The model sees only the image, not the patient’s history, symptoms, or laboratory results.
 •	Regulation: KidneyLife AI is an academic prototype. It is not a registered medical device and may not be used for clinical decisions without regulatory approval.
 
+7. Risks
+
+7.1 A tumour or stone is classified as Normal
+
+Likelihood: Medium
+Impact: High
+Mitigation:
+Class weights make errors on rare classes cost more during training.
+Recall per class is monitored in every test report.
+Predictions below 80% confidence are referred to a radiologist.
+
+7.2 Dataset bias (images from one country)
+
+Likelihood: High
+Impact: Medium
+Mitigation:
+Data augmentation adds variety in angle, position and contrast.
+Validate on anonymised South African images before any pilot and retrain with local data.
+
+7.3 Clinicians rely on the tool too much
+
+Likelihood: Medium
+Impact: High
+Mitigation:
+Clear statement that the tool supports and does not replace diagnosis.
+Confidence for all four classes is always shown.
+
+7.4 Breach of patient privacy
+
+Likelihood: Low
+Impact: High
+Mitigation:
+Use only anonymised images and process them locally (POPIA).
+Role-based access control in any future deployment.
+
+7.5 Laptop too slow or training interrupted
+
+Likelihood: Medium
+Impact: Medium
+Mitigation:
+Small grayscale images and early stopping shorten training.
+The best model is saved after every improvement and can be reloaded.
+
+7.6 Low user adoption
+
+Likelihood: Medium
+Impact: Medium
+Mitigation:
+Two-week pilot with training sessions.
+A radiologist champion and a short user guide.
